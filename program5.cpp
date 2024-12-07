@@ -9,9 +9,6 @@ int main() {
     char source_file[256], destination_file[256];
     int src_off = 0, dst_off = 0;
 
-    // This user input just made a lot more sense for me to implement than 
-    // whatever the heck Dr. Lee is asking for in the assignment details.
-
     // Prompt user for input
     cout << "Enter source file name: ";
     cin >> source_file;
@@ -31,19 +28,17 @@ int main() {
     }
 
     // Open source file
-    FILE* src = nullptr;
-    fopen_s(&src, source_file, "rb");
+    FILE* src = fopen(source_file, "rb");
     if (!src) {
         cerr << "Error: Cannot open source file." << endl;
         return 1;
     }
 
     // Open destination file
-    FILE* dst = nullptr;
-    fopen_s(&dst, destination_file, "r+b");
+    FILE* dst = fopen(destination_file, "r+b");
     if (!dst) {
         // If the destination file does not exist, create it
-        fopen_s(&dst, destination_file, "w+b");
+        dst = fopen(destination_file, "w+b");
     }
     if (!dst) {
         cerr << "Error: Cannot open or create destination file." << endl;
