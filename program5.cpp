@@ -47,7 +47,7 @@ int main() {
     }
 
     // Move source file pointer to (src_off + 1)th byte
-    if (fseek(src, src_off + 1, SEEK_SET) != 0) {
+    if (fseek(src, src_off, SEEK_SET) != 0) {
         cerr << "Error: Source offset is beyond file size." << endl;
         fclose(src);
         fclose(dst);
@@ -55,7 +55,7 @@ int main() {
     }
 
     // Move destination file pointer to (dst_off + 1)th byte
-    if (fseek(dst, dst_off + 1, SEEK_SET) != 0) {
+    if (fseek(dst, dst_off, SEEK_SET) != 0) {
         cerr << "Error: Destination offset is invalid." << endl;
         fclose(src);
         fclose(dst);
